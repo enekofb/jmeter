@@ -12,6 +12,8 @@ spec:
       containers:
       - name: jmeter
         image: enekofb/jmeter:master
+        command: ["/run-jmeter-test.sh"]
+        args: ["10","1","www.google.com","80","/"]
         volumeMounts:
             - mountPath: /results
               name: jmeter
