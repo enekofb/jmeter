@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: jmeter-job
+spec:
+  template:
+    metadata:
+      labels:
+        app: jmeter
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: jmeter
+        image: enekofb/jmeter:master
+        volumeMounts:
+            - mountPath: /results
+              name: jmeter
+      volumes:
+      - name: jmeter
+        hostPath:
+          path: /tmp/jmeter
+
+
